@@ -1,0 +1,153 @@
+html{
+    height: 100%;
+    box-sizing: border-box;
+    word-break: break-all;
+}
+
+body{
+    background-color: black;
+    margin:0; 
+    font: 1em 'Montserrat', sans-serif;
+    position:relative;
+    min-height: 100%;
+    padding-bottom: 7.5rem;
+    box-sizing: inherit;
+    
+}
+.main-cont{
+    display: inline-block;
+    justify-content: space-between;
+    
+}
+.header-container{
+    background-color: #FFE61B;
+    margin: 0;
+    padding: 20px;
+}
+.main-heading{
+    display: inline-block;
+}
+h1{
+    margin: 0; 
+}
+.note-container{
+    vertical-align: top;
+    display: inline-block; 
+    background-color: #DFDFDE;
+    border: 3px solid black;
+    padding: 20px 30px;
+    border-radius: 10%;
+    margin: 25px 45px;
+    max-width: 200px;
+    min-width: 150px;
+    min-height: 100px;
+}
+.content-container, .title-container{
+    text-align: left;
+}
+.footer-container{
+    background-color: #FFE61B;
+    padding: 20px;
+    min-height: 2.5em;
+    position:absolute; 
+    bottom:0;
+    left:0;
+    right:0; 
+
+}
+.title-container{
+    max-height: 150px;
+}
+.main{
+    text-align: center;
+     
+}
+.add-note-container{
+    margin:0 auto; 
+    margin-top: 20px;
+    height: 150px;
+    width:400px;
+    background-color:white;
+    border: black 3px solid;
+    padding: 20px;
+    position: relative;
+    border-radius: 2%;
+    
+}
+
+.add-title{
+    height:30px;
+    width:396px; 
+    text-align: left;
+    border: 0;
+    position: absolute;
+    top:0;
+    left:0; 
+   padding:5px 10px; 
+    margin: 0;
+    padding-right: 0;
+    font-size: 1rem;
+    outline: none;
+    
+    
+}
+.add-note{
+    margin:0 auto; 
+    width:100%;
+    height: 150px;
+    text-align: left;
+    margin-left: 0;
+    position: absolute;
+    top:40px;
+    border: none; 
+    box-sizing: border-box;
+    left:0;
+    padding: 5px 10px; 
+    resize:none; 
+    font-size: 1rem;
+    outline:none; 
+}
+.add-btn{
+    position: absolute;
+    bottom:-17.5px; 
+    right:-5px; 
+    border-radius: 60%;
+    padding: 5px;
+    width: 40px;
+    font-size: larger;
+    background-color: #FFE61B;
+}
+
+.add-icon{
+    color: white;
+}
+.overlay-container{
+    margin: auto;
+    width:300px;
+    height:300px; 
+    position: absolute;
+    text-align: center; 
+    background-color: #FFE61B;
+}
+.delete-btn{
+    background: transparent;
+    border: none;
+}
+
+.note-icon{
+    
+    background-color: #F7F7F7;
+    height:15px; 
+    width:15px; 
+
+}
+.header-icon{
+    font-size: 32px;
+}
+.dark-mode{
+    background-color: #FFE61B;
+    font-size: 30px;
+    border-radius: 50%;
+    position: absolute;
+    right:20px; 
+}
