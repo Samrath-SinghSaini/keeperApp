@@ -1,82 +1,79 @@
-const express = require('express')
-const app = express()
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const Model = require('./model')
-
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const { noteModel, listModel, userModel } = require("./model");
+const { saveData, findData, deleteData, deleteNote, main, findNotes } = require("./queries");
+const listRoutes = require('./routes/listRoutes')
+const userRoutes = require('./routes/authRoutes')
 let dbData;
-let newfoundData 
-app.use(bodyParser.urlencoded({extended:true}))
+let newfoundData;
 
-app.post('/post', (req,res)=>{
-    console.log("Myself server singh sandhu")
-    let title = (req.body.title)
-    let content = req.body.content
-    let fullReq = {title:title, content:content}
-    let dataObj = new Model.noteModel(fullReq)
-    saveData(dataObj)
-})
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/list', listRoutes)
+app.use('/user', userRoutes)
 
-app.post('/delete', async (req, res)=>{
-    console.log("mai chal gaya - delete circa 2023")
-    await deleteData(req.body)
-})
-app.get('/', (req,res)=>{
-    res.send("Server chal gaya bhaiyonnnn")
-})
+//all the notes routes are in the main file. Why? why have I added all the routes for the notes in the main file itself? well because at the time I wrote this code I didn't know enough about routing to create a different file. And even though I should make a separate file I will not because I do not want to spend even a second longer debugging this app. that's why. But I might do that just because who knows
 
- app.get('/app', async (req,res)=>{
+app.post("/note/post", async (req, res) => {
+  console.log("Myself server singh sandhu");
+  let title = req.body.title;
+  let content = req.body.content;
+  let listName = req.body.listName
+  let fullReq = { title: title, content: content, list: listName };
+  let dataObj = new noteModel(fullReq);
+  let save = await saveData(dataObj);
+  console.log('from /note/post')
+  console.log(save._id)
+  let user = await userModel.findOne({userName:'oneUser'})
+  if(user !== null){
+    console.log(user.notes)
+    console.log(user.notes.push(save._id))
+    user.save()
+    console.log(user.notes)
     
-   let x = await findData().then(()=>{
-    res.json(JSON.stringify(dbData))
-   })
+  }
+  
+});
 
+
+app.delete("/note/delete", async (req, res) => {
+  console.log("mai chal gaya - delete circa 2023");
+  let deletedNote = await deleteNote(req.query);
+  if(deletedNote !== null){
+    let user = await userModel.findOne({userName:'oneUser'})
+    let index = user.notes.indexOf(deletedNote._id)
+    if(index > -1){
+      user.notes.splice(index,1)
+      user.save()
+    }
+
+  }
+});
+app.get("/", (req, res) => {
+  res.send("Server chal gaya bhaiyonnnn");
+});
+
+
+app.get("/note/app", async (req, res) => {
+ 
+  let listParam = req.query
+  console.log('listparam')
+  console.log(listParam)
+findNotes(listParam).then((response)=>{
     
-})
+    res.json({data:(response), message:'success'});
+  }).catch((err)=>{
+    res.json({data:err, message:'your request could not be completed'})
+  })
 
+});
 
-app.listen('3000', ()=>{
-    console.log("Server has been started on port 3000")
-})
-let data = {title:"Something title", content:"Something content"}
+app.listen("3000", () => {
+  console.log("Server has been started on port 3000");
+});
+let data = { title: "Something title", content: "Something content" };
 
-main().catch((err)=>{console.log(err)})
-async function main(){
-    
-    await mongoose.connect('mongodb://127.0.0.1:27017/keeper').then(()=>{
-        console.log("Connected to database")
-    }).catch((err)=>{
-        console.log("Could not connect to DB")
-    })
-
-}
-
-async function saveData(dataObj){
-    await dataObj.save()
-    .then(()=>{
-        console.log("Data has been successfully saved")
-    }).catch((err)=>{
-        console.log("could not save data. have fun figuring this one out")
-        console.log(err)
-    })
-}
-
-async function findData(){
-    await Model.noteModel.find()
-    .then((res)=>{
-        dbData =  res
-    }).catch((err)=>{
-        console.log(err)
-    })
-}
-
-async function deleteData(obj){
-    console.log(obj)
-    console.log(obj.title)
-    await Model.noteModel.findOneAndRemove({'title':obj.title})
-    .then((res)=>{
-        console.log("deleted:")
-        console.log(res)})
-        .catch((err)=>{console.log("Could not delete")
-        console.log(err)})
-}
+main().catch((err) => {
+  console.log(err);
+});
