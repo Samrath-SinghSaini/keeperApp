@@ -11,31 +11,44 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/app': {
-        target: 'http://localhost:3000/',
+      '/note': {
+        target: 'http://localhost:3000',
         changeOrigin: true,
         secure: false, 
-        rewrite: (path) => path.replace(/^\/app/, '/app'),
-      },
-      '/post': {
-        target: 'http://localhost:3000/',
+      }
+      , 
+      '/list': {
+        target: 'http://localhost:3000',
         changeOrigin: true,
         secure: false, 
-        rewrite: (path) => path.replace(/^\/post/, '/post'),
-      },
-      '/delete':{
-        target:'http://localhost:3000/', 
+      }
+      , 
+      '/user': {
+        target: 'http://localhost:3000',
         changeOrigin: true,
         secure: false, 
-        rewrite: (path) => path.replace(/^\/delete/, '/delete'),
-      },
+      }
+      // },
+      // '/post': {
+      //   target: 'http://localhost:3000/',
+      //   changeOrigin: true,
+      //   secure: false, 
+      //   rewrite: (path) => path.replace(/^\/post/, '/post'),
+      // },
+      // '/delete':{
+      //   target:'http://localhost:3000/', 
+      //   changeOrigin: true,
+      //   secure: false, 
+      //   rewrite: (path) => path.replace(/^\/delete/, '/delete'),
+      // },
       // Using the proxy instance
-      '/app': {
-        target: 'http://localhost:3000/',
-        changeOrigin: true,
-        configure: (proxy, options) => {
-          // proxy will be an instance of 'http-proxy'
-        }}},
+      // '/app': {
+      //   target: 'http://localhost:3000/',
+      //   changeOrigin: true,
+      //   configure: (proxy, options) => {
+      //     // proxy will be an instance of 'http-proxy'
+      //   }}
+    },
   plugins: [react()],
 }})
 

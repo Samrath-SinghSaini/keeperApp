@@ -6,9 +6,11 @@ import Axios from 'axios'
 
 import Note from "./Note";
 function Entry(props) {
+  let listName  = props.listName ?? 'Default'
   const [newEntry, setNewEntry] = useState({
     title: "",
     content: "",
+    listName:listName
   });
   const [isExpanded, setIsExpanded] = useState(false)
   const [placeholder, setPlaceholder] = useState({title:'Add title', content:'Add content'})
@@ -16,10 +18,15 @@ function Entry(props) {
   function btnClickFunc(event){
     //event.preventDefault()
     if(newEntry.title !== '' && newEntry.content !== ''){
-      props.addNote(newEntry);
+      let postData = {
+        title: newEntry.title.trim(),
+        content: newEntry.content,
+        listName:newEntry.listName
+      }
+      props.addNote(postData);
       //props.sendData()
-      props.sendData(newEntry)
-      setNewEntry({title:'', content:''})
+      props.sendData(postData)
+      setNewEntry({title:'', content:'', listName:listName})
       setPlaceholder({title:'Add Title', content:'Add Content'})
     } else{
       setPlaceholder({title:'Note cannot be empty', content:''})
