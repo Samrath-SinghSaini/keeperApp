@@ -220,6 +220,14 @@ h1 {
 
 .register-container {
 }
+/* .login-container{
+  display: flex;
+  flex-direction: row;
+} */
+.auth-img{
+  height: auto;
+  width:500px;
+}
 .register-main, .login-main {
   text-align: center;
   vertical-align: middle;
@@ -231,9 +239,13 @@ h1 {
   flex-direction: column;
   position: absolute;
   left: 50%;
-  top: 50%;
+  top: 40%;
   transform: translate(-50%,-50%);
-  padding: 30px;
+  padding: 50px;
+  border: 1px solid black;
+}
+.register-main h3, .login-main h3{
+  margin-top: 5px;
 }
 .auth-input {
   padding: 10px;

@@ -49,6 +49,7 @@ function Register() {
   return (
     <div className="register-container">
       <div className="register-main">
+      <h2>Register</h2>
         <h3>Create a new account</h3>
         <input
           type="text"

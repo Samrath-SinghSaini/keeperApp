@@ -4,6 +4,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useNavigate } from 'react-router-dom';
 
+
 function Login(props){
 
     const [userName, setUserName] = useState('')
@@ -60,6 +61,7 @@ function Login(props){
     }
     return <div className="login-container">
     <div className="login-main">
+        <h2>Sign In</h2>
         <h3>Log into your account</h3>
         <input type="text" placeholder="username" value={userName} onChange={(e)=>{setVal(e)}} name='username' className='login-input auth-input'></input>
        
