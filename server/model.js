@@ -7,7 +7,8 @@ const noteSchema = new mongoose.Schema({
     list:String
 })
 const listSchema = new mongoose.Schema({
-    title:String
+    title:String, 
+    userID:{type:Schema.Types.ObjectId, ref:'userDb'}
 })
 
 const userSchema = new mongoose.Schema({

@@ -33,10 +33,11 @@ async function saveData(dataObj){
 }
 
 //this function finds all the data for the given model name
-async function findData(modelName){
+async function findData(modelName, userID){
     let foundVal = {}
-    await modelName.find()
+    await modelName.find({userID:userID})
     .then((res)=>{
+
         dbData =  res
         
         foundVal = dbData
@@ -48,13 +49,19 @@ async function findData(modelName){
 }
 
 //this function finds all the notes in the db taking the listname parameter from the post request as a filter. if the listname All is requested then it returns all the notes.
-async function findNotes(listParam){
+async function findNotes(listParam, notes){
     let foundVal = {}
     console.log(listParam)
-    let filter = {list:listParam.listName}
+   
+    let listFilter = listParam.listName
+    let filter = {list:listFilter, _id:{$in:notes}}
     if(listParam.listName == 'All' || listParam.listName == 'all'){
-        filter = {}
-    }
+        filter = {_id:{$in:notes}}
+    } else if(listFilter == '' || listFilter == null || listFilter == undefined){
+        filter = {list:'Default',  _id:{$in:notes}}
+    } 
+    
+    
     await noteModel.find(filter)
     .then((res)=>{
         dbData =  res

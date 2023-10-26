@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
-const {listModel, noteModel} = require('../model')
+const {listModel, noteModel,userModel} = require('../model')
 const router = express.Router()
 const {saveData, findData, deleteData, main} = require('../queries')
 
@@ -12,22 +12,35 @@ const {saveData, findData, deleteData, main} = require('../queries')
 // })
 //all the routes for the lists 
 router.get('/app', async (req,res)=>{
-    let x = await findData(listModel).then((response)=>{
-        console.log(response)
-        res.json({listNames:response})
-       })
-       .catch((err)=>{
-        console.log(err)
-        res.status(500).json({listNames:null})
-       })
+    let userName = req.query.userName
+    console.log('from list get, ', userName)
+    let userID = await userModel.find({userName:userName}, {_id:1})
+    if(userID){
+        let x = await findData(listModel, userID).then((response)=>{
+            console.log('find list data response')
+            console.log(response)
+            res.json({listNames:response})
+           })
+           .catch((err)=>{
+            console.log(err)
+            res.status(500).json({listNames:null})
+           })
+    }
+  
 })
 
 router.post("/post", async (req, res) => {
     console.log("Myself list singh saini");
-    console.log(req.body.title)
+   
 
-    let title = {title:req.body.title};
-    let dataObj = new listModel(title);
+    
+    console.log('provided username',req.body.userName)
+    let userName = req.body.userName
+    let listTitle = req.body.title
+    let userID = await userModel.findOne({userName:userName}, {_id:1})
+    if(listTitle === undefined || null || ''){listTitle = 'Default'}
+    let data = {title:req.body.title, userID:userID};
+    let dataObj = new listModel(data);
     try{
         let post = await saveData(dataObj);
         console.log(post)

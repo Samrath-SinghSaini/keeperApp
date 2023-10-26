@@ -76,10 +76,12 @@ router.post("/login", async (req, res) => {
     if (response === null) {
       res
         .status(500)
+        .cookie('loggedIn', false, {maxAge:1800000})
         .json({
           authenticated: false,
           message: "You do not have an account, please register",
         });
+        
     } else {
       let foundUser = response;
       bcrypt.compare(password, response.password)
@@ -109,4 +111,12 @@ router.post("/login", async (req, res) => {
   });
 });
 
+router.post('/logout', (req,res)=>{
+  console.log('received logout req')
+  console.log(req.body)
+  let userName = req.body.userName ?? 'user'
+  
+  res.clearCookie('userName')
+  res.status(200).cookie('loggedIn', false).json({loggedOut:true, message:`${userName} has been logged out`})
+})
 module.exports = router;
