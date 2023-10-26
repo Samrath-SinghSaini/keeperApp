@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 
 function Home(props) {
   let { listName } = useParams();
-  console.log(listName);
+ 
   let newNoteEntry = {
     key: null,
     title: "",
@@ -21,10 +21,12 @@ function Home(props) {
   const [data, setData] = useState();
   const [api, setApi] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
+  let userName = props.userName ?? ''
   let newArr = [];
   useEffect(() => {
+    // ?listName=${getParam}
     let getParam = listName ?? 'Default'
-    Axios.get(`/note/app?listName=${getParam}`).then((response) => {
+    Axios.get(`/note/app`, {params:{listName:getParam, userName:props.userName}}).then((response) => {
       let res = response.data.data
       console.log(res)
       res.forEach((element) => {

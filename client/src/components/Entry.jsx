@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AddIcon from '@mui/icons-material/Add';
 import Fab from '@mui/material/Fab';
 import { Zoom } from '@mui/material';
 import Axios from 'axios'
-
+import UserContext from "../Contexts";
 import Note from "./Note";
+import AddCircle from '@mui/icons-material/AddCircleOutlineRounded';
 function Entry(props) {
   let listName  = props.listName ?? 'Default'
+  let {userName} = useContext(UserContext)
   const [newEntry, setNewEntry] = useState({
     title: "",
     content: "",
-    listName:listName
+    listName:listName, 
+    userName:userName
   });
   const [isExpanded, setIsExpanded] = useState(false)
   const [placeholder, setPlaceholder] = useState({title:'Add title', content:'Add content'})
@@ -21,7 +24,8 @@ function Entry(props) {
       let postData = {
         title: newEntry.title.trim(),
         content: newEntry.content,
-        listName:newEntry.listName
+        listName:newEntry.listName, 
+        userName:userName
       }
       props.addNote(postData);
       //props.sendData()
@@ -67,6 +71,7 @@ function Entry(props) {
         onClick={expandInput}
         placeholder={placeholder.title}
       />
+      
       <div style={{visibility:isExpanded? "visible" :"hidden"}}>
       <textarea
         className="add-note"
@@ -83,6 +88,7 @@ function Entry(props) {
         onClick={btnClickFunc}>
 
        <AddIcon className="add-icon"/>
+       
       </button>
       <form method="post" action="/">
         <button onClick={btnClickFunc}>Back</button>

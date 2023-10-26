@@ -17,6 +17,7 @@ body {
 button{
   font: 1em 'Zodiak', serif;
   font-weight: 800;
+  border-radius: 10px;
 }
 input, textarea{
   font: 1em 'Zodiak', serif;
@@ -55,6 +56,13 @@ h1 {
 .title-container {
   text-align: left;
 }
+.title-container h3{
+  word-break: break-word;
+}
+.notePara{
+  word-break: break-word;
+  font-weight: 700;
+}
 .footer-container {
   background-color: #232D3F;
   color: white;
@@ -65,7 +73,7 @@ h1 {
   right: 0;
 }
 .foot {
-  padding: 5px 10px;
+  padding: 2.5px 5px;
 }
 .title-container {
   max-height: 150px;
@@ -115,6 +123,8 @@ h1 {
   resize: none;
   font-size: 1rem;
   outline: none;
+  word-break: break-word;
+  font-weight: 700;
 }
 .add-btn {
   position: absolute;
@@ -124,7 +134,7 @@ h1 {
   padding: 5px;
   width: 40px;
   font-size: larger;
-  background-color: #ffe61b;
+  background-color: #9BABB8;
 }
 
 .add-icon {
@@ -169,10 +179,34 @@ h1 {
 .input-list-div {
   margin: 10px 0;
 }
+.input-div{
+  width:100%;
+  margin-left: 5px;
+  text-align: center;
+}
 .sidebar-div input {
   width: 70%;
   height: 25px;
   border: solid black 0.5px;
+}
+.list-name a{
+  text-decoration: none;
+  color: black;
+  border-bottom: 1px solid black;
+}
+.list-name{
+  font-weight: 700;
+  background: #9BABB8;
+  width: 50%;
+  text-align: center;
+  margin: 0 auto 5px;
+  padding: 5px;
+ 
+}
+.add-list-btn{
+  background-color: inherit;
+  border: none;
+  margin-bottom:-10px;
 }
 .list-name-div {
   overflow-y: auto;

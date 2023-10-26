@@ -4,7 +4,7 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useNavigate } from 'react-router-dom';
 
-function Login(){
+function Login(props){
 
     const [userName, setUserName] = useState('')
     const [password, setPassword] = useState('')
@@ -44,7 +44,9 @@ function Login(){
             console.log(res)
             if(res.data.authenticated){
             setSubmitMessage(res.data.message ?? 'You have been logged in')
-            setTimeout(()=>{navigate('/')}, 5000)
+        
+            props.changeLogin(true, userName)
+            setTimeout(navigate('/'), 5000)
             }
             else{
                 setSubmitMessage(res.data.message ?? 'An error occurred, try again later')
@@ -52,7 +54,7 @@ function Login(){
            
         }).catch((err)=>{
             console.log('there was an error with login:', err)
-            setSubmitMessage(err.response.data.message ?? 'An error occurred, try again later')
+            setSubmitMessage('An error occurred, try again later')
         })
     }
     }

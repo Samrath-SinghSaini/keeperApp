@@ -14,6 +14,7 @@ import Home from "./components/Home";
 import { Routes, Route, useParams } from "react-router-dom";
 import Register from './components/Register'
 import Login from './components/Login'
+import UserContext from "./Contexts";
 
 function App() {
   const [entry, setEntry] = useState([]);
@@ -21,11 +22,21 @@ function App() {
   const [api, setApi] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
   const [listArray, setListArray] = useState(["Default"]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userName, setUserName] = useState(null)
   let newArr = [];
-
+  useEffect(()=>{
+    console.log('global isloggedin is :',isLoggedIn)
+  }, [isLoggedIn])
   
   useEffect(() => {
-    
+    let loginVal = sessionStorage.getItem('IsLoggedIn')
+    let loggedInUser = sessionStorage.getItem('userName')
+    if(loginVal){
+      setIsLoggedIn(true)
+    }
+    if(loggedInUser){setUserName(loggedInUser) 
+      console.log(loggedInUser)}
   }, []);
 
   let newNote = function (noteObject) {
@@ -36,6 +47,19 @@ function App() {
     });
   };
 
+  function getLoginCookieVal(){
+    let cookies = document.cookie?.split('; ')
+    let loggedInCookie = cookies?.find((element)=>{return element.startsWith('loggedIn')})
+    let isLoggedIn = loggedInCookie?.split('=')[1]
+    return isLoggedIn
+  }
+
+  function changeLogin(loggedIn, userName){
+    setIsLoggedIn(loggedIn)
+    setUserName(userName)
+    sessionStorage.setItem('IsLoggedIn', true)
+    sessionStorage.setItem('userName', userName)
+  }
   function dataTwo(noteObject) {
     Axios.post("/post", noteObject, {
       headers: {
@@ -96,15 +120,16 @@ function App() {
           : { backgroundColor: "#dfdfde" }
       }
     >
-      <Header useDarkMode={changeBackground} />
+      
+      <UserContext.Provider value={{userName,isLoggedIn}}>
+      <Header useDarkMode={changeBackground} setIsLoggedIn={setIsLoggedIn}/>
       <Routes>
-      
-      <Route path="/" element={<Home list={listArray} setListArray={setListArray} />}></Route>
-      <Route path="/:listName" element={<Home list={listArray} setListArray={setListArray} />}></Route>
+      <Route path="/" element={isLoggedIn ? <Home list={listArray} setListArray={setListArray} userName={userName}/> : <Login changeLogin={changeLogin}/>}></Route>
+      <Route path="/:listName" element={ isLoggedIn ? <Home list={listArray} setListArray={setListArray} userName={userName}/> : <Login changeLogin={changeLogin}/>}></Route>
       <Route path="/register" element={<Register/>}></Route>
-      <Route path="/login" element={<Login/>}></Route>
+      <Route path="/login" element={<Login changeLogin={changeLogin}/>}></Route>
       </Routes>
-      
+      </UserContext.Provider>
       
       <Footer />
     </div>
