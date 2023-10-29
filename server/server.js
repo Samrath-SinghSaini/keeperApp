@@ -56,7 +56,7 @@ app.delete("/note/delete", async (req, res) => {
   }
 });
 app.get("/", (req, res) => {
-  res.send("Server chal gaya bhaiyonnnn");
+  res.status(200).json({connected:true, message:"You are connected to the backend API server of the Note Keeper Application built by Samrath Singh Saini"})
 });
 
 app.get("/note/app", async (req, res) => {
