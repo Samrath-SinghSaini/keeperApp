@@ -1,7 +1,7 @@
 {
     "rewrites":[
-        {"source":"/note", "destination":"https://keeper-app-six-sigma.vercel.app/"}, 
-        {"source":"/list", "destination":"https://keeper-app-six-sigma.vercel.app/"}, 
-        {"source":"/user", "destination":"https://keeper-app-six-sigma.vercel.app/"}
+        {"source":"/note", "destination":"https://keeperappbackend-ijry.onrender.com/"}, 
+        {"source":"/list", "destination":"https://keeperappbackend-ijry.onrender.com/"}, 
+        {"source":"/user", "destination":"https://keeperappbackend-ijry.onrender.com/"}
 ]
 }
