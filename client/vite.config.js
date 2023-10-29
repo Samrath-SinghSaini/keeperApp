@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 let BASEURL = 'https://keeper-app-six-sigma.vercel.app/'
-import s from './src/public'
+
 // https://vitejs.dev/config/
 export default defineConfig({
   build:{
