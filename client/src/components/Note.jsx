@@ -2,7 +2,7 @@ import React from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
 function Note(prop) {
   function deleteFunc(){
-    console.log("To be deleted: Note - "+ prop.id)
+    // console.log("To be deleted: Note - "+ prop.id)
     prop.deleteNote(prop.id)
   }
   return (

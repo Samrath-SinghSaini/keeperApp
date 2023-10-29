@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-
+let BASEURL = 'http://localhost:3000'
 // https://vitejs.dev/config/
 export default defineConfig({
   build:{
@@ -12,19 +12,19 @@ export default defineConfig({
   server: {
     proxy: {
       '/note': {
-        target: 'http://localhost:3000',
+        target: BASEURL,
         changeOrigin: true,
         secure: false, 
       }
       , 
       '/list': {
-        target: 'http://localhost:3000',
+        target: BASEURL,
         changeOrigin: true,
         secure: false, 
       }
       , 
       '/user': {
-        target: 'http://localhost:3000',
+        target: BASEURL,
         changeOrigin: true,
         secure: false, 
       }

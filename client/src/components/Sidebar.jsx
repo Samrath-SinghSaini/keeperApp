@@ -18,7 +18,7 @@ function Sidebar(){
             listArr.map((element, index)=>{
                 tempArr.push(element.title)
             })
-            console.log(tempArr)
+            // console.log(tempArr)
             setListArray(tempArr)
         })
     }
@@ -26,15 +26,15 @@ function Sidebar(){
         setListArray(()=>{
             let tempArr = listArray.slice()
             tempArr.push(inputVal)
-            console.log(tempArr)
-            console.log(inputVal)
+            // console.log(tempArr)
+            // console.log(inputVal)
             let payload = {title:inputVal, userName:userName}
             axios.post('/list/post', payload,  {
                 headers: {
                   "Content-Type": "application/x-www-form-urlencoded",
                 },
               })
-              .then((res)=>{console.log(res)})
+              .then((res)=>{console.log('success')})
               .catch((err)=>{console.log(err)})
             return tempArr
         })
@@ -46,7 +46,7 @@ function Sidebar(){
         <div className="input-list-div">
         <h4>Add new list</h4>
         <div className="input-div">
-        <input type="text" onChange={(e)=>{inputChange(e)}} value={inputVal} ></input> <button  className="add-list-btn" onClick={addList}><AddCircleIcon style={{marginBottom:"-5px"}}/></button>
+        <input type="text" onChange={(e)=>{inputChange(e)}} value={inputVal} className="sidebar-input"></input> <button  className="add-list-btn" onClick={addList}><AddCircleIcon style={{marginBottom:"-5px"}}/></button>
         </div>
         
         </div>

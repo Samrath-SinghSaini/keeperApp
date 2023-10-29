@@ -20,7 +20,7 @@ function Header(props) {
       setDarkMode(false);
     }
   }
-  console.log('from header, this is the log in val', userName)
+  // console.log('from header, this is the log in val', userName)
   function logoutFunc() {
     props.setIsLoggedIn(false);
     sessionStorage.removeItem("IsLoggedIn");
@@ -28,7 +28,7 @@ function Header(props) {
     axios
       .post("/user/logout")
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

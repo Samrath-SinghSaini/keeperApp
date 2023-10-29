@@ -28,7 +28,7 @@ function Home(props) {
     let getParam = listName ?? 'Default'
     Axios.get(`/note/app`, {params:{listName:getParam, userName:props.userName}}).then((response) => {
       let res = response.data.data
-      console.log(res)
+      // console.log(res)
       res.forEach((element) => {
         let newObj = {
           title: element.title,
@@ -38,7 +38,7 @@ function Home(props) {
       });
       if (newArr) {
         setEntry(newArr);
-        console.log("DONE!!!!! YIPPPIEEE");
+       
       }
     });
   }, []);
@@ -58,8 +58,8 @@ function Home(props) {
       },
     })
       .then(() => {
-        console.log("success");
-        console.log("THis is api sent:" + api);
+        // console.log("success");
+        // console.log("THis is api sent:" + api);
       })
       .catch((err) => {
         console.log(err);
@@ -73,8 +73,8 @@ function Home(props) {
     });
     let element = entry[key];
     setEntry(newArr);
-    console.log(`from delete func`)
-    console.log(element)
+    // console.log(`from delete func`)
+    // console.log(element)
     // entry.filter((value, index)=>{
     //   if(index == key){
     //     return value
@@ -85,7 +85,7 @@ function Home(props) {
         "Content-Type": "application/x-www-form-urlencoded",
       }
     })
-      .then((res) => console.log(res))
+      // .then((res) => console.log(res))
       .catch((err) => {
         console.log(err);
       });

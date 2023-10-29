@@ -42,7 +42,7 @@ function Login(props){
             }
         })
         .then((res)=>{
-            console.log(res)
+            // console.log(res)
             if(res.data.authenticated){
             setSubmitMessage(res.data.message ?? 'You have been logged in')
         

@@ -30,7 +30,7 @@ function Register() {
   }
   function sendData() {
     let userData = { userName: userName, password: password };
-    console.log(userData);
+    // console.log(userData);
     if(userName === '' || password === ''){
       setSubmitMessage('One or more fields are empty, please fill all the fields.')
       return 
@@ -42,7 +42,7 @@ function Register() {
         },
       })
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         setSubmitMessage(response.data.message ?? 'error')
       });
   }

@@ -188,6 +188,7 @@ h1 {
   width: 70%;
   height: 25px;
   border: solid black 0.5px;
+  border-radius: 5px;
 }
 .list-name a{
   text-decoration: none;
