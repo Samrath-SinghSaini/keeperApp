@@ -1,7 +1,14 @@
 {
-  "src/App.jsx": {
-    "file": "assets/App-24f4d33a.js",
+  "index.css": {
+    "file": "assets/index-e72e42dc.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "css": [
+      "assets/index-e72e42dc.css"
+    ],
+    "file": "assets/index-bf9ed715.js",
     "isEntry": true,
-    "src": "src/App.jsx"
+    "src": "index.html"
   }
 }

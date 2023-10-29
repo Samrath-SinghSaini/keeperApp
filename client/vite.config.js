@@ -6,9 +6,7 @@ let BASEURL = 'https://keeper-app-six-sigma.vercel.app/'
 export default defineConfig({
   build:{
     manifest:true, 
-    rollupOptions:{
-      input:'./src/App.jsx'
-    },
+   
     outDir:"public"
   },
   server: {
