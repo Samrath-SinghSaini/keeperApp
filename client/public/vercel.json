@@ -1,7 +1,7 @@
 {
     "rewrites":[
-        {"source":"/note", "destination":"http://localhost:3000"}, 
-        {"source":"/list", "destination":"http://localhost:3000"}, 
-        {"source":"/user", "destination":"http://localhost:3000"}
+        {"source":"/note", "destination":"https://keeper-app-six-sigma.vercel.app/"}, 
+        {"source":"/list", "destination":"https://keeper-app-six-sigma.vercel.app/"}, 
+        {"source":"/user", "destination":"https://keeper-app-six-sigma.vercel.app/"}
 ]
 }
