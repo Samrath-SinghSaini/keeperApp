@@ -9,7 +9,7 @@ export default defineConfig({
     rollupOptions:{
       input:'./src/App.jsx'
     },
-    outDir:"./src/public"
+    outDir:"public"
   },
   server: {
     proxy: {
