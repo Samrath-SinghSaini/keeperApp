@@ -24,7 +24,7 @@ router.get("/notes", async (req, res) => {
     });
 });
 
-router.post("/", async (req, res) => {
+router.post("/register", async (req, res) => {
   let newUserObj = req.body;
   //searching db for username
   let findArray = await userModel.find({ userName: newUserObj.userName });
