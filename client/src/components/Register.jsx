@@ -36,7 +36,7 @@ function Register() {
       return 
     }
     axios
-      .post("/api/user/", userData, {
+      .post("/api/user/register", userData, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -44,7 +44,10 @@ function Register() {
       .then((response) => {
         // console.log(response);
         setSubmitMessage(response.data.message ?? 'error')
-      });
+      })
+      .catch((err)=>{
+        setSubmitMessage('An error occurred please try again later')
+      })
   }
   return (
     <div className="register-container">
