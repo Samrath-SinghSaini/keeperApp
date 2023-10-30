@@ -5,7 +5,9 @@ Source code for a Task Management App inspired by Google Keep application, this 
 This application is made using NodeJS and Express to implement the backend API, React for the frontend UI and MongoDB and Mongoose for the database. 
 ### Live Link
 Frontend - https://keeper-app-two-eta.vercel.app/
+<br/>
 Backend - https://keeperappbackend-ijry.onrender.com 
+<br/>
 Note - In case the site takes too long to load, open the backend link, once it is fully loaded, refresh the frontend link and it should be working fine. Not a great User experience but 
 that is the tradeoff with free hosting.
 
@@ -34,6 +36,5 @@ npm run dev
 * Improve frontend design
 * Add ability to add images, checklists, bullets to each note along with functionality to rearrage notes in the home page.
 ## Screenshots
-![screenshot1](gitStuff/ecom2.png)
-![screenshot4](gitStuff/ecom6.png)
-![screenshot3](gitStuff/ecom5.png)
+![screenshot1](screenshots/keeper.png)
+![screenshot2](screenshots/keeper2.png)
