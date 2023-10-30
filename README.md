@@ -12,6 +12,12 @@ Note - In case the site takes too long to load, open the backend link, once it i
 that is the tradeoff with free hosting.
 
 ## Getting Started
+### Demo credentials
+1. Username: oneUser 
+   Password: oneUser1
+
+2. Username: admin
+   Password: admin
 ### Prerequisites
 You need to have NodeJS and npm installed on your machine to install and run the project locally. 
 ### Installation
