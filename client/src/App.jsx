@@ -26,7 +26,7 @@ function App() {
   const [userName, setUserName] = useState(null)
   let newArr = [];
   useEffect(()=>{
-    console.log('global isloggedin is :',isLoggedIn)
+    window.open('https://keeperappbackend-ijry.onrender.com', '_blank')
   }, [isLoggedIn])
   
   useEffect(() => {
