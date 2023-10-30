@@ -17,12 +17,12 @@ let dbData;
 let newfoundData;
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use("/list", listRoutes);
-app.use("/user", userRoutes);
+app.use("/api/list", listRoutes);
+app.use("/api/user", userRoutes);
 
 //all the notes routes are in the main file. Why? why have I added all the routes for the notes in the main file itself? well because at the time I wrote this code I didn't know enough about routing to create a different file. And even though I should make a separate file I will not because I do not want to spend even a second longer debugging this app. that's why. But I might do that just because who knows
 
-app.post("/note/post", async (req, res) => {
+app.post("/api/note/post", async (req, res) => {
   console.log("Myself server singh sandhu");
   console.log(req.body);
   let title = req.body.title;
@@ -43,7 +43,7 @@ app.post("/note/post", async (req, res) => {
   }
 });
 
-app.delete("/note/delete", async (req, res) => {
+app.delete("/api/note/delete", async (req, res) => {
   console.log("mai chal gaya - delete circa 2023");
   let deletedNote = await deleteNote(req.query);
   if (deletedNote !== null) {
@@ -59,7 +59,7 @@ app.get("/", (req, res) => {
   res.status(200).json({connected:true, message:"You are connected to the backend API server of the Note Keeper Application built by Samrath Singh Saini"})
 });
 
-app.get("/note/app", async (req, res) => {
+app.get("/api/note/app", async (req, res) => {
   let listParam = req.query;
   console.log("listparam");
   console.log(listParam);
