@@ -13,8 +13,11 @@ that is the tradeoff with free hosting.
 
 ## Getting Started
 ### Demo credentials
-Username: oneUser Password: oneUser1
-Password: admin Password: admin
+1. Username: oneUser 
+   Password: oneUser1
+
+2. Username: admin
+   Password: admin
 ### Prerequisites
 You need to have NodeJS and npm installed on your machine to install and run the project locally. 
 ### Installation
