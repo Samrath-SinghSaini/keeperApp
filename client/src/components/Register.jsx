@@ -42,8 +42,9 @@ function Register() {
         },
       })
       .then((response) => {
-        // console.log(response);
-        setSubmitMessage(response.data.message ?? 'error')
+        console.log(response);
+        setSubmitMessage('Your account has been successfully created' ?? 'error')
+        setTimeout(()=>{navigate('/login')}, 5000)
       })
       .catch((err)=>{
         setSubmitMessage('An error occurred please try again later')
