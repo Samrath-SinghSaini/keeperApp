@@ -1,0 +1,11 @@
+{
+    "rewrites":[
+        {"source":"/api/note/:match", "destination":"https://keeperappbackend-ijry.onrender.com/api/note/:match"}, 
+        {"source":"/api/list/:match", "destination":"https://keeperappbackend-ijry.onrender.com/api/list/:match"}, 
+        {"source":"/api/user/:match", "destination":"https://keeperappbackend-ijry.onrender.com/api/user/:match"},
+        {
+            "source": "/(.*)",
+            "destination": "/"
+          }
+]
+}
