@@ -36,7 +36,7 @@ function Register() {
       return 
     }
     axios
-      .post("/user", userData, {
+      .post("/api/user", userData, {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },

@@ -11,7 +11,7 @@ function Sidebar(){
         fetchList()
     }, [])
     function fetchList(){
-        axios.get('/list/app', {params:{userName:userName}})
+        axios.get('/api/list/app', {params:{userName:userName}})
         .then((res)=>{
             let listArr = res.data.listNames
             let tempArr = []

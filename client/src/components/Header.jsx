@@ -26,7 +26,7 @@ function Header(props) {
     sessionStorage.removeItem("IsLoggedIn");
     sessionStorage.removeItem("userName");
     axios
-      .post("/user/logout")
+      .post("/api/user/logout")
       .then((res) => {
         // console.log(res.data);
       })

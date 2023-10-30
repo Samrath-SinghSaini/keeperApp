@@ -36,7 +36,7 @@ function Login(props){
         }
         else{
         let userData = {userName:userName, password:password}
-        axios.post('/user/login', userData, {
+        axios.post('/api/user/login', userData, {
             headers:{
                 "Content-Type":"application/x-www-form-urlencoded"
             }

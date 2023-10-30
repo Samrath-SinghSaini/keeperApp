@@ -61,7 +61,7 @@ function App() {
     sessionStorage.setItem('userName', userName)
   }
   function dataTwo(noteObject) {
-    Axios.post("/post", noteObject, {
+    Axios.post("/api/post", noteObject, {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
@@ -88,7 +88,7 @@ function App() {
     //     return value
     //   }
     // })
-    Axios.post("/delete", element, {
+    Axios.post("/api/delete", element, {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },

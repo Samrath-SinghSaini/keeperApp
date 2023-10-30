@@ -11,20 +11,20 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/note': {
+      '/api/note': {
         target: BASEURL,
         changeOrigin: true,
         secure: false, 
       }
       , 
-      '/list': {
+      '/api/list': {
         target: BASEURL,
         changeOrigin: true,
         secure: false, 
       }
       , 
-      '/user': {
-        target: BASEURL,
+      '/api/user': {
+        target: BASEURL ,
         changeOrigin: true,
         secure: false, 
       }

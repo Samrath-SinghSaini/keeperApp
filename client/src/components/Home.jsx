@@ -26,7 +26,7 @@ function Home(props) {
   useEffect(() => {
     // ?listName=${getParam}
     let getParam = listName ?? 'Default'
-    Axios.get(`/note/app`, {params:{listName:getParam, userName:props.userName}}).then((response) => {
+    Axios.get(`/api/note/app`, {params:{listName:getParam, userName:props.userName}}).then((response) => {
       let res = response.data.data
       // console.log(res)
       res.forEach((element) => {
@@ -52,7 +52,7 @@ function Home(props) {
   };
 
   function dataTwo(noteObject) {
-    Axios.post("/note/post", noteObject, {
+    Axios.post("/api/note/post", noteObject, {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
@@ -80,7 +80,7 @@ function Home(props) {
     //     return value
     //   }
     // })
-    Axios.delete(`/note/delete?title=${element.title}`,{
+    Axios.delete(`/api/note/delete?title=${element.title}`,{
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       }
