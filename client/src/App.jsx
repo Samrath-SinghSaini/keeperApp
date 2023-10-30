@@ -25,9 +25,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userName, setUserName] = useState(null)
   let newArr = [];
-  useEffect(()=>{
-    window.open('https://keeperappbackend-ijry.onrender.com', '_blank')
-  }, [])
   
   useEffect(() => {
     let loginVal = sessionStorage.getItem('IsLoggedIn')

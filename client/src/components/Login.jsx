@@ -11,6 +11,11 @@ function Login(props){
     const [password, setPassword] = useState('')
     const [submitMessage, setSubmitMessage] = useState("");
     const [showPassword, setShowPassword] = useState(false)
+
+    useEffect(()=>{
+        window.open('https://keeperappbackend-ijry.onrender.com', '_blank')
+      }, [])
+      
     const navigate = useNavigate()
     function setVal(e){
         if(e.target.name == 'username'){
