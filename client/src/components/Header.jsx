@@ -94,6 +94,7 @@ function Header(props) {
             logoutFunc();
             navigate("/login");
           }}
+          style={{ display: isLoggedIn ? "inline-block" : "none" }}
         >
           Logout
         </button>
