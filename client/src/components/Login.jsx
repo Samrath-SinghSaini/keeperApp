@@ -12,9 +12,9 @@ function Login(props){
     const [submitMessage, setSubmitMessage] = useState("");
     const [showPassword, setShowPassword] = useState(false)
 
-    useEffect(()=>{
-        window.open('https://keeperappbackend-ijry.onrender.com', '_blank')
-      }, [])
+    // useEffect(()=>{
+    //     window.open('https://keeperappbackend-ijry.onrender.com', '_blank')
+    //   }, [])
       
     const navigate = useNavigate()
     function setVal(e){
