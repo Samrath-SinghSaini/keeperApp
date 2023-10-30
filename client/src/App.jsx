@@ -27,7 +27,7 @@ function App() {
   let newArr = [];
   useEffect(()=>{
     window.open('https://keeperappbackend-ijry.onrender.com', '_blank')
-  }, [isLoggedIn])
+  }, [])
   
   useEffect(() => {
     let loginVal = sessionStorage.getItem('IsLoggedIn')
