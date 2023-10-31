@@ -25,8 +25,9 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userName, setUserName] = useState(null)
   let newArr = [];
-  
+  window.sessionStorage.setItem('backendOpened', 'false')
   useEffect(() => {
+    startBackend()
     let loginVal = sessionStorage.getItem('IsLoggedIn')
     let loggedInUser = sessionStorage.getItem('userName')
     if(loginVal){
@@ -36,6 +37,13 @@ function App() {
       console.log(loggedInUser)}
   }, []);
 
+  function startBackend(){
+    let backend = window.sessionStorage.getItem('backendOpened')
+    if(backend === 'false'){
+      window.open('https://keeperappbackend-ijry.onrender.com', '_blank')
+      window.sessionStorage.setItem('backendOpened', 'true')
+    }
+  }
   let newNote = function (noteObject) {
     let count = 4;
     count += 1;
